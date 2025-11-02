@@ -110,7 +110,7 @@ func onMessage(msg: ChatMessage):
 	if msg.userId == lastUser and !Ranking.topRank.canRepeatNumber:
 		return;
 
-	if msg.message == str(counter):
+	if msg.message == str(counter + 1):
 		lastUser = msg.userId;
 		frog.moveHand(nextHold.isLeft, nextHold.getPlacementPosition());
 		nextHold = holds.pop_front();
