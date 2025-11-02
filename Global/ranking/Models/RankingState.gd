@@ -13,3 +13,4 @@ class_name RankingState;
 @export var banMods: bool = false;
 @export var banUsers: bool = true;
 @export var canRepeatNumber: bool = false;
+@export var awardVIP: bool = true;

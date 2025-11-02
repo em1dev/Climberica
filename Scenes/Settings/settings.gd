@@ -5,6 +5,7 @@ extends CanvasLayer
 @onready var user_timeout: CheckBox = $'Control/SettingsPanel/VBoxContainer/User Timeout'
 @onready var volume_slider: HSlider = $Control/SettingsPanel/VBoxContainer/VolumeSlider
 @onready var user_repeat: CheckBox = $'Control/SettingsPanel/VBoxContainer/User Repeat'
+@onready var should_award_vip: CheckBox = $Control/SettingsPanel/VBoxContainer/ShouldAwardVip
 
 var masterIndex = AudioServer.get_bus_index("Master");
 var isOpen := false;
@@ -15,6 +16,8 @@ func _ready():
 	user_timeout.button_pressed = Ranking.topRank.banUsers;
 	volume_slider.value = Ranking.topRank.volume;
 	user_repeat.button_pressed = Ranking.topRank.canRepeatNumber;
+	should_award_vip.button_pressed = Ranking.topRank.awardVIP;
+	
 	get_window().mouse_entered.connect(_onMouseEnter);
 	get_window().mouse_exited.connect(_onMouseLeave);
 
@@ -69,7 +72,7 @@ func _on_user_timeout_toggled(button_pressed: bool) -> void:
 func _on_yes_btn_pressed() -> void:
 	Ranking.topRank = RankingState.new();
 	Ranking.saveState();
-	get_tree().change_scene_to_file('res://Scenes/SpashScreen/SplashScreen.tscn');
+	get_tree().change_scene_to_file("res://Scenes/TitleScreen/TitleScreen.tscn");
 
 func _on_no_btn_pressed() -> void:
 	$AreYouSurePlayer.play_backwards('Show');
@@ -87,3 +90,7 @@ func toggleSettings():
 	else:
 		isOpen = true;
 		$SettingsPlayer.play('Show');
+
+func _on_should_award_vip_toggled(toggled_on: bool) -> void:
+	Ranking.topRank.awardVIP = toggled_on;
+	Ranking.saveState();

@@ -1,6 +1,6 @@
 [gd_scene load_steps=26 format=3 uid="uid://dhsma7w704v1j"]
 
-[ext_resource type="Script" path="res://Scenes/Climb/Ending/ending.gd" id="1_4uyie"]
+[ext_resource type="Script" uid="uid://coai2upqh3lcv" path="res://Scenes/Climb/Ending/ending.gd" id="1_4uyie"]
 [ext_resource type="Texture2D" uid="uid://bnyn5fwo1txhu" path="res://Images/ending.png" id="2_8jm3c"]
 [ext_resource type="Texture2D" uid="uid://b1hv4ktfm0j5l" path="res://Images/EndingNew.png" id="3_jij77"]
 [ext_resource type="Texture2D" uid="uid://cmc4iei4jyrnj" path="res://Images/spark.png" id="4_f1buu"]
@@ -279,14 +279,23 @@ text = "Niv3k_El_Pato"
 label_settings = SubResource("LabelSettings_xqsci")
 horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="Control"]
+[node name="WinMsg" type="Label" parent="Control"]
 layout_mode = 0
 offset_left = -35.0
 offset_top = 32.0
 offset_right = 131.0
-offset_bottom = 64.0
-text = "Has won de vip
-Goal increased by 5 "
+offset_bottom = 45.0
+text = "Has won the vip"
+label_settings = SubResource("LabelSettings_315me")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -35.0
+offset_top = 47.0
+offset_right = 131.0
+offset_bottom = 60.0
+text = "Goal increased by 5 "
 label_settings = SubResource("LabelSettings_315me")
 horizontal_alignment = 1
 

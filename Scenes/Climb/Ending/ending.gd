@@ -1,5 +1,6 @@
 extends Node2D
 
+@onready var winMsg: Label = $Control/WinMsg
 @onready var labelContainer: Control = $Control
 var holds:Array[Node] = [];
 
@@ -19,10 +20,14 @@ func _ready():
 func end(userId: String, userName: String):
 	labelContainer.visible = true;
 	Ranking.topRank.poleSize += 5;
-	if Ranking.topRank.lastVipUserId:
-		Twitch.removeVip(Ranking.topRank.lastVipUserId);
-	Ranking.topRank.lastVipUserId = userId;
-	Twitch.addVip(userId);
+	if Ranking.topRank.awardVIP:
+		winMsg.text = 'Has won the VIP';
+		if Ranking.topRank.lastVipUserId:
+			Twitch.removeVip(Ranking.topRank.lastVipUserId);
+		Ranking.topRank.lastVipUserId = userId;
+		Twitch.addVip(userId);
+	else:
+		winMsg.text = 'Has won';
 	$Control/UserName.text = userName;
 	var tween = get_tree().create_tween();
 	tween.tween_property(Global.gameCamera, 'global_position', $EndCameraPosition.global_position, 3);

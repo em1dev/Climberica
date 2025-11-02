@@ -1,6 +1,6 @@
 [gd_scene load_steps=27 format=3 uid="uid://cu7y272vfk4cq"]
 
-[ext_resource type="Script" path="res://Scenes/Settings/settings.gd" id="1_u6gkx"]
+[ext_resource type="Script" uid="uid://c8lfw25xhwill" path="res://Scenes/Settings/settings.gd" id="1_u6gkx"]
 [ext_resource type="Texture2D" uid="uid://b4j4511v1eo6o" path="res://Images/settingsPanel.png" id="2_enpdl"]
 [ext_resource type="FontFile" uid="uid://24u51pg3pulx" path="res://Font/monogram.ttf" id="2_hocia"]
 [ext_resource type="PackedScene" uid="uid://dm3vlw77or5pj" path="res://UIControls/CheckBox.tscn" id="6_dvfqx"]
@@ -64,8 +64,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f6krq"]
 _data = {
-"RESET": SubResource("Animation_if2c3"),
-"Show": SubResource("Animation_ee32y")
+&"RESET": SubResource("Animation_if2c3"),
+&"Show": SubResource("Animation_ee32y")
 }
 
 [sub_resource type="Animation" id="Animation_o5phq"]
@@ -101,8 +101,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q03od"]
 _data = {
-"RESET": SubResource("Animation_o5phq"),
-"Show": SubResource("Animation_hrb7l")
+&"RESET": SubResource("Animation_o5phq"),
+&"Show": SubResource("Animation_hrb7l")
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1sfw0"]
@@ -132,7 +132,7 @@ layout_mode = 0
 offset_left = -58.0
 offset_top = -64.0
 offset_right = 57.0
-offset_bottom = 63.0
+offset_bottom = 81.0
 scale = Vector2(1, 1e-05)
 pivot_offset = Vector2(51, 62)
 texture = ExtResource("2_enpdl")
@@ -150,11 +150,11 @@ texture_pressed = ExtResource("7_p8ux6")
 texture_hover = ExtResource("7_p8ux6")
 
 [node name="DeleteButton" type="TextureButton" parent="Control/SettingsPanel"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 10.0
-offset_top = 106.0
+offset_top = 109.0
 offset_right = 93.0
-offset_bottom = 122.0
+offset_bottom = 125.0
 texture_normal = ExtResource("8_3pdkr")
 texture_pressed = ExtResource("9_2lvte")
 
@@ -180,6 +180,10 @@ text = "TIMEOUT USERS"
 [node name="User Repeat" parent="Control/SettingsPanel/VBoxContainer" instance=ExtResource("6_dvfqx")]
 layout_mode = 2
 text = "CAN REPEAT NUMBER"
+
+[node name="ShouldAwardVip" parent="Control/SettingsPanel/VBoxContainer" instance=ExtResource("6_dvfqx")]
+layout_mode = 2
+text = "AWARD VIP TO WINNER"
 
 [node name="Label" type="Label" parent="Control/SettingsPanel/VBoxContainer"]
 layout_mode = 2
@@ -233,14 +237,14 @@ texture_normal = ExtResource("13_287k7")
 texture_pressed = ExtResource("14_m6ju4")
 
 [node name="SettingsPlayer" type="AnimationPlayer" parent="."]
-autoplay = "RESET"
 libraries = {
-"": SubResource("AnimationLibrary_f6krq")
+&"": SubResource("AnimationLibrary_f6krq")
 }
+autoplay = "RESET"
 
 [node name="AreYouSurePlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_q03od")
+&"": SubResource("AnimationLibrary_q03od")
 }
 
 [node name="UI" type="Control" parent="."]
@@ -277,6 +281,7 @@ texture_hover = SubResource("AtlasTexture_3ooys")
 [connection signal="toggled" from="Control/SettingsPanel/VBoxContainer/Mod Timeout" to="." method="_on_mod_timeout_toggled"]
 [connection signal="toggled" from="Control/SettingsPanel/VBoxContainer/User Timeout" to="." method="_on_user_timeout_toggled"]
 [connection signal="toggled" from="Control/SettingsPanel/VBoxContainer/User Repeat" to="." method="_on_user_repeat_toggled"]
+[connection signal="toggled" from="Control/SettingsPanel/VBoxContainer/ShouldAwardVip" to="." method="_on_should_award_vip_toggled"]
 [connection signal="drag_ended" from="Control/SettingsPanel/VBoxContainer/VolumeSlider" to="." method="_on_volume_slider_drag_ended"]
 [connection signal="value_changed" from="Control/SettingsPanel/VBoxContainer/VolumeSlider" to="." method="_on_volume_slider_value_changed"]
 [connection signal="pressed" from="Control/AreYouSurePanel/YesBtn" to="." method="_on_yes_btn_pressed"]
