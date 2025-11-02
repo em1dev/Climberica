@@ -14,7 +14,8 @@
     const token = tokenKeyValue.split('=')[1];
     await fetch(AUTH_URL + `?token=${token}`, { method: 'POST' });
     window.close();
+    document.getElementById('login_lb').innerText = 'All done. You can now close this window.';
   })();
 </script>
 
-<h1>Login...</h1>
+<h1 id="login_lb">Login...</h1>
