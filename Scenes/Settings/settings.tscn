@@ -161,9 +161,9 @@ texture_pressed = ExtResource("9_2lvte")
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/SettingsPanel"]
 layout_mode = 0
 offset_left = 10.0
-offset_top = 21.0
+offset_top = 23.0
 offset_right = 93.0
-offset_bottom = 92.0
+offset_bottom = 96.0
 theme_override_constants/separation = 4
 
 [node name="IsFullscreenCheckbox" parent="Control/SettingsPanel/VBoxContainer" instance=ExtResource("6_dvfqx")]
