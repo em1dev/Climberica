@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Climberica"
 config/tags=PackedStringArray("jams")
-run/main_scene="res://Scenes/SpashScreen/SplashScreen.tscn"
+run/main_scene="res://Scenes/TitleScreen/TitleScreen.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 boot_splash/bg_color=Color(0.0431373, 0.0431373, 0.0431373, 1)
 boot_splash/show_image=false

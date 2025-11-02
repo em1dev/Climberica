@@ -1,10 +1,17 @@
-extends Node2D
+extends CanvasLayer
 
-var titleScreen = preload('res://Scenes/TitleScreen/TitleScreen.tscn')
+signal OnAnimationEnd;
+
+func _ready():
+	visible = true;
+
+func onEnd():
+	OnAnimationEnd.emit()
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	get_tree().change_scene_to_packed(titleScreen);
+	queue_free();
 
 func _input(event: InputEvent):
 	if event.is_pressed():
-		get_tree().change_scene_to_packed(titleScreen);
+		onEnd();
+		queue_free();
